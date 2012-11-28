@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "imagine/imagine": "*"
+        "imagine/Imagine": "*"
     },
     "extra": {
         "branch-alias": {
