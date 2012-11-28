@@ -1,0 +1,24 @@
+{
+    "name": "zenstruck/imagine-filters",
+    "description": "Extra filters for Imagine",
+    "keywords": ["imagine"],
+    "homepage": "http://zenstruck.com/project/imagine-filters",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kevin Bond",
+            "email": "kevinbond@gmail.com"
+        }
+    ],
+    "require": {
+        "imagine/imagine": "*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-0": { "Zenstruck\\Imagine\\": "src" }
+    }
+}
