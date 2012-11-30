@@ -1,4 +1,4 @@
-# imagine-fitlers
+# imagine-filters
 
 Provides extra filters for [Imagine](https://github.com/avalanche123/Imagine)
 
