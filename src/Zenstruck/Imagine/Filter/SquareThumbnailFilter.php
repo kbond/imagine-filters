@@ -25,8 +25,15 @@ class SquareThumbnailFilter implements FilterInterface
 
     public function apply(ImageInterface $image)
     {
-        // create thumbnail
-        $thumb = $image->thumbnail($this->size, ImageInterface::THUMBNAIL_INSET);
+        $origSize = $image->getSize();
+
+        if ($origSize->getWidth() < $this->size->getWidth() && $origSize->getHeight() < $this->size->getHeight()) {
+            // if image is smaller, don't stretch - just center the smaller image
+            $thumb = $image->thumbnail($origSize, ImageInterface::THUMBNAIL_INSET);
+        } else {
+            // shrink to fit
+            $thumb = $image->thumbnail($this->size, ImageInterface::THUMBNAIL_INSET);
+        }
 
         // create square canvas
         $image->resize($this->size);
