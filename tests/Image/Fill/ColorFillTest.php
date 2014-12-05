@@ -24,4 +24,12 @@ class ColorFillTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($color, $fill->getColor($this->getMock('Imagine\Image\PointInterface')));
     }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidColor()
+    {
+        $fill = new ColorFill('foo');
+    }
 }
