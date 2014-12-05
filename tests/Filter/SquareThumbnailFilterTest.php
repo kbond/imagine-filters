@@ -4,6 +4,7 @@ namespace Zenstruck\Imagine\Tests\Filter;
 
 use Imagine\Image\Box;
 use Imagine\Image\Color;
+use Imagine\Image\Palette\RGB;
 use Zenstruck\Imagine\Filter\SquareThumbnailFilter;
 
 /**
@@ -14,7 +15,7 @@ class SquareThumbnailFilterTest extends \PHPUnit_Framework_TestCase
     public function testApplyWithLargerImage()
     {
         $size = new Box(10, 10);
-        $filter = new SquareThumbnailFilter($size, new Color('FFFFFF'));
+        $filter = new SquareThumbnailFilter($size, $this->getColor());
         $thumb = $this->getMock('Imagine\Image\ImageInterface');
         $image = $this->getMock('Imagine\Image\ImageInterface');
 
@@ -43,7 +44,7 @@ class SquareThumbnailFilterTest extends \PHPUnit_Framework_TestCase
     public function testApplyWithSmallerImage()
     {
         $size = new Box(10, 10);
-        $filter = new SquareThumbnailFilter($size, new Color('FFFFFF'));
+        $filter = new SquareThumbnailFilter($size, $this->getColor());
         $thumb = $this->getMock('Imagine\Image\ImageInterface');
         $image = $this->getMock('Imagine\Image\ImageInterface');
 
@@ -67,5 +68,16 @@ class SquareThumbnailFilterTest extends \PHPUnit_Framework_TestCase
             ->with($thumb, $this->isInstanceOf('Imagine\Image\Point'));
 
         $this->assertSame($image, $filter->apply($image));
+    }
+
+    private function getColor()
+    {
+        if (class_exists('Imagine\Image\Color')) {
+            return new Color('FFFFFF');
+        }
+
+        $palette = new RGB();
+
+        return $palette->color('FFFFFF');
     }
 }

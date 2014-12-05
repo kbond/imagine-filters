@@ -3,6 +3,7 @@
 namespace Zenstruck\Imagine\Tests\Image\Fill;
 
 use Imagine\Image\Color;
+use Imagine\Image\Palette\RGB;
 use Zenstruck\Imagine\Image\Fill\ColorFill;
 
 /**
@@ -12,7 +13,12 @@ class ColorFillTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetColor()
     {
-        $color = new Color('FFFFFF');
+        if (class_exists('Imagine\Image\Color')) {
+            $color = new Color('FFFFFF');
+        } else {
+            $color = new RGB();
+            $color = $color->color('FFFFFF');
+        }
 
         $fill = new ColorFill($color);
 

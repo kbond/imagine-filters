@@ -3,7 +3,6 @@
 namespace Zenstruck\Imagine\Filter;
 
 use Imagine\Filter\FilterInterface;
-use Imagine\Image\Color;
 use Imagine\Image\BoxInterface;
 use Imagine\Image\ImageInterface;
 use Imagine\Image\Point;
@@ -14,15 +13,22 @@ use Zenstruck\Imagine\Image\Fill\ColorFill;
  */
 class SquareThumbnailFilter implements FilterInterface
 {
-    protected $size;
-    protected $color;
+    private $size;
+    private $color;
 
-    public function __construct(BoxInterface $size, Color $color)
+    /**
+     * @param BoxInterface                                                     $size
+     * @param \Imagine\Image\Palette\Color\ColorInterface|\Imagine\Image\Color $color
+     */
+    public function __construct(BoxInterface $size, $color)
     {
         $this->size = $size;
         $this->color = $color;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function apply(ImageInterface $image)
     {
         $origSize = $image->getSize();
