@@ -11,7 +11,10 @@
         }
     ],
     "require": {
-        "imagine/Imagine": "*"
+        "imagine/imagine": "~0.4,<0.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
     },
     "extra": {
         "branch-alias": {
@@ -19,6 +22,9 @@
         }
     },
     "autoload": {
-        "psr-0": { "Zenstruck\\Imagine\\": "src" }
+        "psr-4": { "Zenstruck\\Imagine\\": "src" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Zenstruck\\Imagine\\Tests\\": "tests" }
     }
 }
